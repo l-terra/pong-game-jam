@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://sx36pveook1x"]
+
+[ext_resource type="Script" path="res://Level/level.gd" id="1_0ukqb"]
+[ext_resource type="PackedScene" uid="uid://dmk46xjybx1c1" path="res://Player/player.tscn" id="1_sjdrj"]
+[ext_resource type="PackedScene" uid="uid://dionljjs6h8n6" path="res://Ball/Ball.tscn" id="2_bo0fk"]
+[ext_resource type="PackedScene" uid="uid://0qyerq7hp0hq" path="res://player_2NEW.tscn" id="3_cvyev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiyce"]
+size = Vector2(1920, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_poar0"]
+size = Vector2(40.5, 1079.25)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_0ukqb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0215234, 0.404155, 0.704362, 0.0666667)
+
+[node name="Player1" parent="." instance=ExtResource("1_sjdrj")]
+position = Vector2(60, 540)
+slide_on_ceiling = false
+
+[node name="Player2" parent="." instance=ExtResource("3_cvyev")]
+position = Vector2(1860, 540)
+
+[node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
+position = Vector2(960, 540)
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(960, -18)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource("RectangleShape2D_eiyce")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(640, 1098)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(320, 0)
+shape = SubResource("RectangleShape2D_eiyce")
+
+[node name="Left" type="Area2D" parent="."]
+position = Vector2(-2, 180)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-20, 360)
+shape = SubResource("RectangleShape2D_poar0")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(1942, 540.375)
+shape = SubResource("RectangleShape2D_poar0")
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
