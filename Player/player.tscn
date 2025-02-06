@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kopnq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ed7h"]
-size = Vector2(39.5, 291)
+size = Vector2(40, 290)
 
 [node name="Player1" type="CharacterBody2D"]
-position = Vector2(49, 337)
+position = Vector2(60, 540)
 disable_mode = 1
 motion_mode = 1
 wall_min_slide_angle = 0.523599
@@ -15,9 +15,10 @@ script = ExtResource("1_kopnq")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.75, 6.49999)
+position = Vector2(180, 102)
 scale = Vector2(1.30645, 2.40496)
 texture = ExtResource("1_46a6x")
+offset = Vector2(-134.142, -39.7096)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.25, 6.5)

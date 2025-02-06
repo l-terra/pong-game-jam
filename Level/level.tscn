@@ -23,14 +23,12 @@ grow_vertical = 2
 color = Color(0.0215234, 0.404155, 0.704362, 0.0666667)
 
 [node name="Player1" parent="." instance=ExtResource("1_sjdrj")]
-position = Vector2(60, 540)
 slide_on_ceiling = false
 
 [node name="Player2" parent="." instance=ExtResource("3_cvyev")]
-position = Vector2(1860, 540)
 
 [node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
-position = Vector2(960, 540)
+metadata/_edit_group_ = true
 
 [node name="Top" type="StaticBody2D" parent="."]
 position = Vector2(960, -18)

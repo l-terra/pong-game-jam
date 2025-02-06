@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bmleffn0fpt0k" path="res://assets/Paddle.png" id="2_bflk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52dim"]
-size = Vector2(39.5, 291)
+size = Vector2(40, 290)
 
 [node name="Player2" type="CharacterBody2D"]
+position = Vector2(1860, 540)
 motion_mode = 1
 script = ExtResource("1_cl14m")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.75, 6.49999)
