@@ -23,12 +23,11 @@ grow_vertical = 2
 color = Color(0.0215234, 0.404155, 0.704362, 0.0666667)
 
 [node name="Player1" parent="." instance=ExtResource("1_sjdrj")]
+collision_layer = 3
 slide_on_ceiling = false
 
 [node name="Player2" parent="." instance=ExtResource("3_cvyev")]
-
-[node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
-metadata/_edit_group_ = true
+collision_layer = 3
 
 [node name="Top" type="StaticBody2D" parent="."]
 position = Vector2(960, -18)
@@ -59,5 +58,65 @@ shape = SubResource("RectangleShape2D_poar0")
 position = Vector2(1942, 540.375)
 shape = SubResource("RectangleShape2D_poar0")
 
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Countdown" type="Label" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 395.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Count"
+horizontal_alignment = 1
+
+[node name="Life" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "LIFE
+"
+horizontal_alignment = 1
+
+[node name="Press_Start" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 395.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Pressione ESPAÇO para começar!"
+horizontal_alignment = 1
+
+[node name="Points" type="Label" parent="." groups=["BallGroup", "collision_counter"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 104.0
+offset_right = 2.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
+collision_layer = 3
+metadata/_edit_group_ = true
+
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
