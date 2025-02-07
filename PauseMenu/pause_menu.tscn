@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvnu1o0c4lj6y"]
+
+[ext_resource type="Theme" uid="uid://ccw54myrmows7" path="res://PauseMenu/pause_menu.tres" id="1_5evkb"]
+[ext_resource type="Script" path="res://PauseMenu/pause_menu.gd" id="1_8l1v4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjfif"]
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_8l1v4")
+
+[node name="overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.537255)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -211.0
+offset_right = 960.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0855571, 4.87324e-05, 0.299667, 1)
+
+[node name="menu_holder" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="menu_holder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Jogo pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="menu_holder"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gjfif")
+
+[node name="resume_button" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("1_5evkb")
+theme_override_font_sizes/font_size = 50
+text = "Voltar ao jogo"
+
+[node name="VSeparator2" type="VSeparator" parent="menu_holder"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gjfif")
+
+[node name="quit_button" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("1_5evkb")
+theme_override_font_sizes/font_size = 50
+text = "Voltar para a tela inicial"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Countdown" type="Label" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 334.0
+offset_right = 2.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "TESTE"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="menu_holder/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="menu_holder/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

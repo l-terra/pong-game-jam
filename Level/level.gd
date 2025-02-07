@@ -1,13 +1,15 @@
 extends Node 
 
 # Variaveis para guardar informacoes
-var player_score = 0 # Ainda nao trabalhado
+var player_score = 0
 var life = 3
 var game_started = false # Controla se o jogo ja comecou
 
 func _ready():
 	# Deixa o contador invisivel ate o jogo começar
 	$Countdown.visible = false
+	# Deixa a pontuacao invisivel ate o jogo comecar -> menos coisas na tela
+	$Points.visible = false
 	# Faz a bola parar enquanto o jogo nao começa
 	get_tree().call_group('BallGroup', 'stop_ball')
 	# Mensagem para pressionar espaço
@@ -50,13 +52,14 @@ func _process(delta):
 	# Se a variavel life chegar em 0 manda pra tela de game over
 	if life == 0:
 		Global.player_points = $Ball.collision_counter
-		print(Global.player_points)
 		get_tree().change_scene_to_file("res://GameOverPrototype/game_over_prototype.tscn")
 
 func _on_countdown_timer_timeout() -> void:
 	get_tree().call_group('BallGroup','restart_ball')
 	# Tira o timer da tela quando o tempo termina
 	$Countdown.visible = false
+	# Deixa a pontuacao visivel
+	$Points.visible = true
 
 func ball_outofbounds():
 	# Reseta posicao da bola para o centro da tela

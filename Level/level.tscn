@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://sx36pveook1x"]
+[gd_scene load_steps=8 format=3 uid="uid://sx36pveook1x"]
 
 [ext_resource type="Script" path="res://Level/level.gd" id="1_0ukqb"]
 [ext_resource type="PackedScene" uid="uid://dmk46xjybx1c1" path="res://Player/player.tscn" id="1_sjdrj"]
 [ext_resource type="PackedScene" uid="uid://dionljjs6h8n6" path="res://Ball/Ball.tscn" id="2_bo0fk"]
 [ext_resource type="PackedScene" uid="uid://0qyerq7hp0hq" path="res://Player2/player_2.tscn" id="3_cvyev"]
+[ext_resource type="PackedScene" uid="uid://bvnu1o0c4lj6y" path="res://PauseMenu/pause_menu.tscn" id="5_6rsow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiyce"]
 size = Vector2(1920, 34)
@@ -116,6 +117,8 @@ vertical_alignment = 1
 [node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
 collision_layer = 3
 metadata/_edit_group_ = true
+
+[node name="pause_menu" parent="." instance=ExtResource("5_6rsow")]
 
 [connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
 [connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
