@@ -9,6 +9,7 @@ size = Vector2(40, 290)
 [node name="Player2" type="CharacterBody2D"]
 position = Vector2(1860, 540)
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_cl14m")
 metadata/_edit_group_ = true
 

@@ -8,6 +8,7 @@ radius = 32.0
 
 [node name="Ball" type="CharacterBody2D" groups=["BallGroup"]]
 position = Vector2(960, 540)
+motion_mode = 1
 safe_margin = 10.036
 script = ExtResource("1_j1urs")
 

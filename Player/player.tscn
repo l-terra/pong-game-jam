@@ -10,7 +10,7 @@ size = Vector2(40, 290)
 position = Vector2(60, 540)
 disable_mode = 1
 motion_mode = 1
-wall_min_slide_angle = 0.523599
+wall_min_slide_angle = 0.0
 script = ExtResource("1_kopnq")
 metadata/_edit_group_ = true
 

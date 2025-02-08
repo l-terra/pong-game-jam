@@ -22,6 +22,10 @@ func _on_resume_button_pressed() -> void:
 	$ColorRect.visible = false
 	$menu_holder.visible = false
 	$Countdown.visible = true
+	# Desliga o timer de quando a bola sai dos limites da tela -> Tava tendo
+	# conflito dos timers juntos
+	$"../Countdown".visible = false
+	$"../CountdownTimer".stop()
 	get_tree().call_group('BallGroup','stop_ball')
 	$Timer.start()
 
