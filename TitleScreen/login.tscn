@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh3ljlcu7yaus"]
+
+[ext_resource type="Script" path="res://Level/login.gd" id="1_4nq74"]
+[ext_resource type="Texture2D" uid="uid://fihu6dm8x47h" path="res://assets/Praia_Jogo.jpg" id="2_tytem"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4nq74")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_tytem")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1406.0
+offset_top = 767.0
+offset_right = 1791.0
+offset_bottom = 895.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="NovoJogo" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "NOVO JOGO"
+
+[node name="Sair" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SAIR"
+
+[connection signal="pressed" from="VBoxContainer2/NovoJogo" to="." method="_on_novo_jogo_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Sair" to="." method="_on_sair_pressed"]
