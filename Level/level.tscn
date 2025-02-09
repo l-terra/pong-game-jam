@@ -118,8 +118,6 @@ vertical_alignment = 1
 
 [node name="Ball" parent="." instance=ExtResource("2_bo0fk")]
 collision_layer = 3
-motion_mode = 0
-slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 floor_stop_on_slope = false
 metadata/_edit_group_ = true

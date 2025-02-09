@@ -1,10 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmk46xjybx1c1"]
+[gd_scene load_steps=9 format=3 uid="uid://dmk46xjybx1c1"]
 
-[ext_resource type="Texture2D" uid="uid://bmleffn0fpt0k" path="res://assets/Paddle.png" id="1_46a6x"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_kopnq"]
+[ext_resource type="Texture2D" uid="uid://blwiajupn2naa" path="res://assets/Pombo02.png" id="3_cwvt0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ed7h"]
-size = Vector2(40, 290)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m01g4"]
+atlas = ExtResource("3_cwvt0")
+region = Rect2(1280, 0, 640, 1076)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppd38"]
+atlas = ExtResource("3_cwvt0")
+region = Rect2(0, 0, 480, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tbmy"]
+atlas = ExtResource("3_cwvt0")
+region = Rect2(0, 0, 514, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kkn6"]
+atlas = ExtResource("3_cwvt0")
+region = Rect2(463, 0, 463, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4y7h"]
+atlas = ExtResource("3_cwvt0")
+region = Rect2(902, 0, 451, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vhi7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m01g4")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppd38")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tbmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kkn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4y7h")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
 
 [node name="Player1" type="CharacterBody2D"]
 position = Vector2(60, 540)
@@ -12,14 +62,16 @@ disable_mode = 1
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_kopnq")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(180, 102)
-scale = Vector2(1.30645, 2.40496)
-texture = ExtResource("1_46a6x")
-offset = Vector2(-134.142, -39.7096)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(159, 6.5)
+scale = Vector2(1.33696, 1.08469)
+polygon = PackedVector2Array(10.4715, -13.3679, 14.9593, -36.416, 5.9837, -53.9326, 2.24388, -61.308, 17.9511, -64.9957, 22.4389, -71.4492, 19.4471, -77.9027, 11.9674, -86.2, 2.99185, -88.9658, -1.49593, -95.4193, -5.98372, -103.717, -7.47964, -110.17, -9.72353, -117.545, -16.4552, -122.155, -23.9348, -126.765, -32.9104, -128.609, -40.39, -128.609, -47.8697, -128.609, -53.8534, -122.155, -57.5932, -112.014, -65.0728, -86.2, -70.3086, -68.6834, -71.8045, -43.7914, -77.0403, -26.2749, -85.2679, -4.14868, -91.9995, 44.7134, -85.2679, 79.7465, -75.5443, 87.1219, -70.3086, 102.795, -68.0647, 117.545, -71.8045, 125.843, -52.3575, 135.062, -32.9104, 138.75, -26.9267, 129.531, -8.2276, 137.828, 2.24388, 131.374, 1.49593, 119.389, -12.7154, 112.014, -8.97557, 96.3412, 8.97556, 80.6685, 22.4389, 64.0738, 30.6665, 41.9476, 26.1787, 15.2117, 23.1869, -1.3829)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.25, 6.5)
-shape = SubResource("RectangleShape2D_7ed7h")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(57, 31)
+scale = Vector2(0.770833, 0.770833)
+sprite_frames = SubResource("SpriteFrames_vhi7k")
+animation = &"walking"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

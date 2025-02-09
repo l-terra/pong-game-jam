@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dh3ljlcu7yaus"]
 
-[ext_resource type="Script" path="res://Level/login.gd" id="1_4nq74"]
+[ext_resource type="Script" path="res://TitleScreen/login.gd" id="1_4nq74"]
 [ext_resource type="Texture2D" uid="uid://fihu6dm8x47h" path="res://assets/Praia_Jogo.jpg" id="2_tytem"]
 
 [node name="Login" type="Control"]
@@ -11,6 +11,7 @@ offset_bottom = 40.0
 script = ExtResource("1_4nq74")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_tytem")
